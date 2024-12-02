@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: #000000;
+    position: relative;
+    overflow-x: hidden;
+    font-family: "Unbounded", system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Unbounded", system-ui, -apple-system, sans-serif;
+    font-optical-sizing: auto;
+  }
+
+  .font-light { font-weight: 300; }
+  .font-normal { font-weight: 400; }
+  .font-medium { font-weight: 500; }
+  .font-semibold { font-weight: 600; }
+  .font-bold { font-weight: 700; }
+  .font-extrabold { font-weight: 800; }
+
+  /* Gradient background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(
+        circle at center,
+        rgba(37, 99, 235, 0.15) 0%,
+        rgba(0, 0, 0, 0) 70%
+      ),
+      linear-gradient(
+        45deg,
+        #000000 0%,
+        #0A0A0B 25%,
+        rgba(30, 58, 138, 0.3) 50%,
+        #0A0A0B 75%,
+        #000000 100%
+      );
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+    z-index: -1;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.7));
+    }
+  }
+}
+
+/* Glass effect with gradient border */
+.glass-effect {
+  @apply bg-black/80 backdrop-blur-md relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.5), rgba(59, 130, 246, 0.5)) border-box;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.glass-effect:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.6), rgba(59, 130, 246, 0.6)) border-box;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+  border-radius: 3px;
+}
+
+/* Button styles */
+.glass-button {
+  @apply bg-black/80 backdrop-blur-md relative transition-all duration-300;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.5), rgba(59, 130, 246, 0.5)) border-box;
+  border: 1px solid transparent;
+}
+
+.glass-button:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.6), rgba(59, 130, 246, 0.6)) border-box;
+}
+
+/* Input styles */
+.input-glow {
+  @apply bg-black/80 relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.4), rgba(59, 130, 246, 0.4)) border-box;
+  border: 1px solid transparent;
+}
+
+.input-glow:focus {
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.5), rgba(59, 130, 246, 0.5)) border-box;
+  outline: none;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply text-transparent bg-clip-text;
+  background-image: linear-gradient(45deg, #60A5FA, #3B82F6);
+}
+
+/* Glow effects */
+.glow-blue-sm {
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.4);
+}
+
+.hover-glow-blue {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-blue:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Logo glow */
+.logo-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Modal styles */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+}
+
+.modal-content {
+  @apply bg-black/80 backdrop-blur-md rounded-2xl;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) padding-box,
+              linear-gradient(45deg, rgba(37, 99, 235, 0.5), rgba(59, 130, 246, 0.5)) border-box;
+  border: 1px solid transparent;
+}
